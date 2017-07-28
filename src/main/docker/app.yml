@@ -1,0 +1,14 @@
+version: '2'
+services:
+    testingjhipsterapplication-app:
+        image: testingjhipsterapplication
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:mysql://testingjhipsterapplication-mysql:3306/testingjhipsterapplication?useUnicode=true&characterEncoding=utf8&useSSL=false
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+        ports:
+            - 1234:1234
+    testingjhipsterapplication-mysql:
+        extends:
+            file: mysql.yml
+            service: testingjhipsterapplication-mysql
